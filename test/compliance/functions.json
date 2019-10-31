@@ -880,6 +880,11 @@
       "description": "serialize object",
       "expression": "to_json(api.query)",
       "result": "{\"skip\":10,\"limit\":1000,\"filter\":\"*:all:*\"}"
+    },
+    {
+      "description": "serialise more complex object",
+      "expression": "to_json(event)",
+      "result": "{\"eventName\":\"Delete\",\"eventTime\":\"2019-01-01T00:00:00Z\",\"detail\":{\"type\":\"gcp\",\"value\":null,\"isReady\":true},\"count\":60,\"fraction\":2933.93}"
     }
   ]
 }

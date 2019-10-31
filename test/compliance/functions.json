@@ -823,7 +823,7 @@
   ]
 }, {
   "given": {
-    "plain_string": "This is a sentence lacking anything interesting  to split on",
+    "plain_string": "This is a sentence lacking anything interesting to split on",
     "with_commas": "array,list,vector,string,number,integer",
     "on_ends": "||column 1||column 2||column 3||"
   },
@@ -854,7 +854,7 @@
     },
     {
       "expression": "split(plain_string, ' ')",
-      "result": ["This", "is", "a", "sentence", "lacking", "anything", "interesting", "", "to", "split", "on"]
+      "result": ["This", "is", "a", "sentence", "lacking", "anything", "interesting", "to", "split", "on"]
     }
   ]
 }

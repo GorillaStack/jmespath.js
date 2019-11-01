@@ -887,5 +887,41 @@
       "result": "{\"eventName\":\"Delete\",\"eventTime\":\"2019-01-01T00:00:00Z\",\"detail\":{\"type\":\"gcp\",\"value\":null,\"isReady\":true},\"count\":60,\"fraction\":2933.93}"
     }
   ]
+}, {
+  "given": {
+    "plain_string": "This is a sentence lacking anything interesting to split on",
+    "with_commas": "array,list,vector,string,number,integer",
+    "on_ends": "||column 1||column 2||column 3||"
+  },
+  "cases": [
+    {
+      "expression": "split(with_commas, ',')",
+      "result": ["array","list","vector","string","number","integer"]
+    },
+    {
+      "expression": "split(with_commas, ',', `-1`)",
+      "result": ["array","list","vector","string","number","integer"]
+    },
+    {
+      "expression": "split(with_commas, '|')",
+      "result": ["array,list,vector,string,number,integer"]
+    },
+    {
+      "expression": "split(with_commas, ',', `4`)",
+      "result": ["array","list","vector","string,number,integer"]
+    },
+    {
+      "expression": "split(with_commas, ',', `0`)",
+      "result": ["array,list,vector,string,number,integer"]
+    },
+    {
+      "expression": "split(on_ends, '||')",
+      "result": ["", "column 1", "column 2", "column 3", ""]
+    },
+    {
+      "expression": "split(plain_string, ' ')",
+      "result": ["This", "is", "a", "sentence", "lacking", "anything", "interesting", "to", "split", "on"]
+    }
+  ]
 }
 ]

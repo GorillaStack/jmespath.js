@@ -823,6 +823,72 @@
   ]
 }, {
   "given": {
+    "event": "{\n\"eventName\": \"Create\",\n  \"eventTime\": \"2019-01-01T00:00:00Z\",\n \"detail\": { \"is_ready\": false, \"type\": null } }",
+    "type_list": "[\"aws\", \"azure\", \"gcp\"]"
+  },
+  "cases": [
+    {
+      "description": "parse JSON object",
+      "expression": "parse_json(event).eventTime",
+      "result": "2019-01-01T00:00:00Z"
+    },
+    {
+      "description": "use JSON array with filter",
+      "expression": "parse_json(type_list)[?starts_with(@, 'a')]",
+      "result": ["aws", "azure"]
+    }
+  ]
+}, {
+  "given": {
+    "event": {
+      "eventName": "Delete",
+      "eventTime": "2019-01-01T00:00:00Z",
+      "detail": {
+        "type": "gcp",
+        "value": null,
+        "isReady": true
+      },
+      "count": 60,
+      "fraction": 2933.93
+    },
+    "types": [
+      "aws",
+      "azure",
+      "gcp"
+    ],
+    "api": {
+      "method": "GET",
+      "headers": [
+        { "content-type": "application/json" },
+        { "accept": "*/*" }
+      ],
+      "path": "/api/v1/listAll",
+      "query": {
+        "skip": 10,
+        "limit": 1000,
+        "filter": "*:all:*"
+      }
+    }
+  },
+  "cases": [
+    {
+      "description": "serialize array",
+      "expression": "to_json(types)",
+      "result": "[\"aws\",\"azure\",\"gcp\"]"
+    },
+    {
+      "description": "serialize object",
+      "expression": "to_json(api.query)",
+      "result": "{\"skip\":10,\"limit\":1000,\"filter\":\"*:all:*\"}"
+    },
+    {
+      "description": "serialise more complex object",
+      "expression": "to_json(event)",
+      "result": "{\"eventName\":\"Delete\",\"eventTime\":\"2019-01-01T00:00:00Z\",\"detail\":{\"type\":\"gcp\",\"value\":null,\"isReady\":true},\"count\":60,\"fraction\":2933.93}"
+    }
+  ]
+}, {
+  "given": {
     "plain_string": "This is a sentence lacking anything interesting to split on",
     "with_commas": "array,list,vector,string,number,integer",
     "on_ends": "||column 1||column 2||column 3||"

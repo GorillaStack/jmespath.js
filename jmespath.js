@@ -1230,7 +1230,9 @@
         "not_null": {
             _func: this._functionNotNull,
             _signature: [{types: [TYPE_ANY], variadic: true}]
-        }
+        },
+        parse_json: {_func: this._functionParseJson, _signature: [{types: [TYPE_STRING]}]},
+        to_json: {_func: this._functionToJson, _signature: [{types: [TYPE_ANY]}]},
     };
   }
 
@@ -1687,6 +1689,25 @@
         }
       }
       return minRecord;
+    },
+
+    _functionParseJson: function(resolvedArgs) {
+      var value = resolvedArgs[0];
+      try {
+        return JSON.parse(value);
+      } catch (error) {
+        throw new RuntimeError('Unable to parse JSON');
+      }
+    },
+
+    _functionToJson: function(resolvedArgs) {
+      var value = resolvedArgs[0];
+
+      try {
+        return JSON.stringify(value);
+      } catch (error) {
+        throw new RuntimeError('Unable to serialise value to JSON');
+      }
     },
 
     createKeyFunction: function(exprefNode, allowedTypes) {

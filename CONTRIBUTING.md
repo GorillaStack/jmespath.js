@@ -11,9 +11,12 @@ This is a fork of the original JavaScript implementation (jmespath.js), hosted a
 
 From what we can ascertain, the original specification has not been maintained for
 some years and the JavaScript fork has not accepted patches or responded to issues
-for some time (Some of the other language implementations do appear to be maintained).
+for some time (some of the other language implementations do appear to be maintained).
 We believe this project is still useful, so we are making improvements and
 fixing bugs in this copy of the code.
+
+**There is a [Github Issue](https://github.com/jmespath/jmespath.site/issues/65)**
+**discussing the future of the JMESPath specification and its implementations**
 
 ## Contributing to this project
 

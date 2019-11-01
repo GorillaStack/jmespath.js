@@ -1,6 +1,10 @@
 # jmespath.js
 
-[![Build Status](https://travis-ci.org/jmespath/jmespath.js.png?branch=master)](https://travis-ci.org/jmespath/jmespath.js)
+> **NOTE:** This is a fork of jmespath.js. The original does
+> not appear to be actively maintained - please see our
+> contribution guidelines for more details.
+
+## Introduction
 
 jmespath.js is a javascript implementation of JMESPath,
 which is a query language for JSON.  It will take a JSON
@@ -39,6 +43,12 @@ from a list.  Here are a few more examples:
                            {"age": 40}]},
                   "foo[?age > `30`]")
 [ { age: 35 }, { age: 40 } ]
+```
+
+## Installation
+
+```bash
+npm install @gorillastack/jmespath
 ```
 
 ## More Resources
